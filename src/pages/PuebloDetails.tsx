@@ -14,14 +14,12 @@ export const PuebloDetails = ( { pueblo, show, handleClose, colors }:any ) => {
             const random:number = Math.floor(Math.random() * colors.length)
             const cardBackground:String = colors[random]
             return(
-                <img key={pueblo._id} src={image} className="w-1/2 hover:w-3/4 mt-5 rounded-xl shadow-2xl" style={{border:`4px solid ${cardBackground}`}}/>
+                <img key={pueblo._id} src={image} className="w-1/2 hover:w-3/4 duration-500 mt-5 rounded-xl shadow-2xl" style={{border:`4px solid ${cardBackground}`}}/>
             )
         })}
       </Modal.Body>
       <Modal.Footer style={{position:'sticky'}}>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
+        <button onClick={handleClose}> Close </button>
       </Modal.Footer>
   </Modal>
   )
