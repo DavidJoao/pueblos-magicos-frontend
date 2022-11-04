@@ -1,7 +1,5 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import PuebloCard from '../components/PuebloCard'
-import { BiFilter } from 'react-icons/bi'
-import { NavDropdown } from 'react-bootstrap'
 
 interface IPueblo {
   name: string,
