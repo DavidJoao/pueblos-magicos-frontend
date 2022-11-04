@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import PuebloCard from '../components/PuebloCard'
+import { BiFilter } from 'react-icons/bi'
+import { NavDropdown } from 'react-bootstrap'
 
 interface IPueblo {
   name: string,
@@ -10,10 +12,12 @@ interface IPueblo {
 }
 
 export const Pueblos = () => {
+    const [match, setMatch] = useState('')
+    const [pueblos, setPueblos] = useState<any[]>([])
+    const [searchCharacters, setSearchCharacters] = useState<String>('')
+    const colors:Array<String> = ['#D72630', '#D7D52A', '#F28A17', '#07A499', '#FF7EA0', '#872E8C']
+    const states = ['Aguascalientes', 'Baja California Sur', 'Baja California', 'Campeche', 'Chiapas', 'Chihuahua', 'Ciudad de Mexico', 'Coahuila', 'Colima', 'Durango', 'Guanajuato', 'Guerrero', 'Hidalgo', 'Jalisco', 'Mexico', 'Michoacan', 'Morelos', 'Nayarit', 'Nuevo Leon', 'Oaxaca', 'Puebla', 'Queretaro', 'Quintaran Roo', 'San Luis Potosi', 'Sinaloa', 'Sonora', 'Tabasco', 'Tamaulipas', 'Tlaxcala', 'Veracruz', 'Yucatan', 'Zacatecas']
 
-  const [pueblos, setPueblos] = useState<any[]>([])
-  const [searchCharacters, setSearchCharacters] = useState<String>('')
-  const colors:Array<String> = ['#D72630', '#D7D52A', '#F28A17', '#07A499', '#FF7EA0', '#872E8C']
 
 
   useEffect(() => {
@@ -32,10 +36,12 @@ export const Pueblos = () => {
         <img className='rotate-5' src='https://www.pngall.com/wp-content/uploads/5/Mexican-Banner-PNG-Image.png' style={{width:'30%'}}/>
         <img className='rotate-5' src='https://www.pngall.com/wp-content/uploads/5/Mexican-Banner-PNG-Image.png' style={{width:'30%'}}/>
       </div>
-      <input type="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg w-1/2 p-2.5 mt-5" placeholder="Ex. Nochistlan" onChange={(e) => {
-        setSearchCharacters(e.target.value)
-      }} required />
-      {pueblos && pueblos.length > 0 ? 
+      <div className='w-full flex flex-row justify-center items-center mt-5'>
+        <input type="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg w-1/2 p-2.5" placeholder="Ex. Nochistlan" onChange={(e) => {
+            setSearchCharacters(e.target.value)
+        }} required />
+      </div>
+      {pueblos && pueblos.length > 0 ?
         pueblos.filter(pueblo => searchCharacters == '' || pueblo.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
         .map(pueblo => {
           const random:number = Math.floor(Math.random() * colors.length)
