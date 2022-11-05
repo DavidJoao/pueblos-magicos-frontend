@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# Pueblos Magicos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+After looking around for websites and web apps that were focused on providing details about Mexico's Pueblos Magicos, and not being able to find a page with the information I needed, I decided to create a website that allows me to show each town with a short description and images. 
 
-## Available Scripts
+In this website people are able to scroll and navigate through all 132 Pueblos Magicos that exist.
 
-In the project directory, you can run:
+Also, I created an admin panel that allows me to create, delete and edit the information from my database if needed.
 
-### `npm start`
+## Technologies used: 
+- MongoDB
+- TypeScript
+- NodeJS
+- Tailwind CSS
+- ExpressJS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## `Site screenshots`
+![main](/assets/mainpage.png)
+The main page is where all towns are displayed, there is a list with all 132 towns are shown and people can navigate through them.
+<br><br>
+![details](/assets/detailmodal.png)
+![pics](/assets/picsmodsl.png)
+The detail modal provides a short description about the town and includes a few so the visitor can take a look at them.
+<br><br>
+![hover](/assets/hover.png)
+Visitor are able to hover over the images to look at them more in detail, when they hover over it, the photograph expands to a considerable size.
+<br><br>
+![filter](/assets/filter.png)
+Also, there is a filter that is very useful in case the visitor is looking for a specific town.
+<br><br>
+![login](/assets/loginpanel.png)
+![mainpanel](/assets/mainpanel.png)
+The administrator panel is used to create a town and add it to the database, to delete, and to update a town if necessary. To use it there is a code required.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## `Future implementations`
 
-### `npm run build`
+After finishing the first version, I have planned to create forms to sign up and log in, so users can leave reviews on each town. This would be using PassportJS and OAuth authentication, and it would be implemented also in the administration panel.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
