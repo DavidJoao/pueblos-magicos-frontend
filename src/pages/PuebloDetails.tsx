@@ -4,8 +4,9 @@ import { Modal } from 'react-bootstrap'
 export const PuebloDetails = ( { pueblo, show, handleClose, colors }:any ) => {
   return (
     <Modal size="lg" show={show} onHide={handleClose} style={{overflow:'auto', height:'90%'}}>
-      <Modal.Header closeButton>
+      <Modal.Header className='flex flex-col' closeButton>
         <Modal.Title>{pueblo.name}, {pueblo.state}, {pueblo.country}</Modal.Title>
+        <p className='text-black/10'>#{pueblo._id}</p>
       </Modal.Header>
       <Modal.Body className="flex flex-col justify-center items-center" >
         <img key={`${pueblo.id}1`} src={pueblo.images[0]} className="w-1/2 rounded-xl mb-2 shadow-xl" style={{border:'4px solid red'}}/>

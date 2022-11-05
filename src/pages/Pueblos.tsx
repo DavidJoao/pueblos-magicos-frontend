@@ -28,7 +28,7 @@ export const Pueblos = () => {
   }, [])
   
   return (
-    <div style={{background:"url('https://media.istockphoto.com/vectors/creative-vector-seamless-pattern-vector-id842797588?k=20&m=842797588&s=612x612&w=0&h=bAhhqxtiO9P_br-d_gOKAc8Uac9NnbKBXnqBY9TWbQk=')"}} className='border border-black h-auto flex flex-col justify-center items-center min-h-screen'>
+    <div className='border border-black h-auto flex flex-col justify-center items-center min-h-screen bg-slate-300'>
       <div className='flex justify-center'>
         <img className='rotate-5' src='https://www.pngall.com/wp-content/uploads/5/Mexican-Banner-PNG-Image.png' style={{width:'30%'}}/>
         <img className='rotate-5' src='https://www.pngall.com/wp-content/uploads/5/Mexican-Banner-PNG-Image.png' style={{width:'30%'}}/>

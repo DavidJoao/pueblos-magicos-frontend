@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import PuebloForm from "./PuebloForm";
-import { IoHome } from 'react-icons/io5' 
+import { IoHome, IoTrash } from 'react-icons/io5' 
 import { Link } from "react-router-dom";
 
 const Panel = () => {
@@ -31,7 +31,9 @@ const Panel = () => {
                 </form>
             </div>
             {component}
-            <Link to='/' className="text-white mt-20 text-5xl"> <IoHome></IoHome> </Link>
+            <div className="flex flex-row mt-3">
+                <Link to='/' className="text-white text-5xl"> <IoHome></IoHome> </Link>
+            </div>
         </div>
     )
 }
