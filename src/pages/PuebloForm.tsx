@@ -50,7 +50,8 @@ export default function PuebloForm() {
 
   return (
         <div className='border border-slate-500 h-1/2 w-1/2 flex flex-col justify-center items-center shadow-xl bg-slate-300 rounded'>
-            <form onSubmit={submitHandler} className='flex justift-center items-center flex-col border-b-[1px] border-black mb-3'>
+            <h1 className='p-2 border-b-[1px] border-black w-1/2 text-center'>Create Pueblo</h1>
+            <form onSubmit={submitHandler} className='flex justift-center items-center flex-col border-b-[1px] border-black w-1/2 mb-3'>
                 <h4>Name:</h4>
                 <input required className='p-1 rounded' placeholder='Name' value={form.name} onChange={(e) => {
                     changeHandler("name", e.target.value)
@@ -79,12 +80,13 @@ export default function PuebloForm() {
                 </div>
                 <h4>Images:</h4>
                 <input required placeholder='Enter links separated by one space' className='p-1 rounded' onChange={ImagesHandler}/>
-                <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2">Submit</button>
+                <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2">SUBMIT</button>
             </form>
 
-            <form onSubmit={handleDelete} className='flex flex-col justify-center items-center mb-2'>
+            <form onSubmit={handleDelete} className='flex flex-col justify-center items-center mb-2 w-full'>
+                <h1 className='border-b-[1px] border-black w-1/2 text-center pb-3 mb-2'>Delete Pueblo</h1>
                 <h1>Enter pueblo ID</h1>
-                <input className='p-1 rounded' placeholder="Ex. 1ac2tv56723ds" />
+                <input className='p-1 rounded mt-2' placeholder="Ex. 1ac2tv56723ds" />
                 <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2' type='submit'>DELETE</button>
             </form>
     </div>
