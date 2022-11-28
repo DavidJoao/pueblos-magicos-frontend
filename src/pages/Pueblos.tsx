@@ -10,7 +10,6 @@ interface IPueblo {
 }
 
 export const Pueblos = () => {
-    const [match, setMatch] = useState('')
     const [pueblos, setPueblos] = useState<any[]>([])
     const [searchCharacters, setSearchCharacters] = useState<String>('')
     const colors:Array<String> = ['#D72630', '#D7D52A', '#F28A17', '#07A499', '#FF7EA0', '#872E8C']
