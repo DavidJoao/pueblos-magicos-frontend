@@ -21,9 +21,19 @@ export default function PuebloForm() {
         country: '',
         images: []
     }
-    
+
+    let FindResults: Pueblo = {
+        name: '',
+        description:'',
+        state: '',
+        country: '',
+        images: []
+    }
+
+    const [findResults, setFindResults] = useState<any>(FindResults)
     const [form, setForm] = useState(initialState)
     const [puebloId, setPuebloId] = useState('')
+    const [findId, setFindId] = useState('')
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -53,8 +63,19 @@ export default function PuebloForm() {
 
     const handleUpdate = (e:React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault()
-        //Axios call to update pueblo
     }
+
+    const handleFind = () => {
+        fetch(`http://localhost:8000/pueblos/${findId}`)
+        .then(response => response.json())
+        .then(response => {
+            setFindResults(response)
+            console.log(response)
+        })
+        handleShow()
+        setFindId('')
+    }
+
   return (
         <div className='border border-slate-500 h-1/2 w-1/2 flex flex-col justify-center items-center shadow-xl bg-slate-300 rounded'>
             <h1 className='p-2 border-b-[1px] border-gray-400 w-1/2 text-center'>Create Pueblo</h1>
@@ -102,8 +123,10 @@ export default function PuebloForm() {
             <form className='w-full flex flex-col items-center p-2' onSubmit={handleUpdate}>
                 <h1 className='border-t-[1px] border-b-[1px] border-gray-400 p-3 w-1/2 text-center'>Update Pueblo</h1>
                 <p>Enter pueblo ID</p>
-                <input className='p-1 rounded'></input>
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2' onClick={handleShow}>UPDATE</button>
+                <input className='p-1 rounded' value={findId} onChange={(e) => {
+                    setFindId(e.target.value)
+                }}></input>
+                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2' onClick={handleFind}>UPDATE</button>
             </form>
             <UpdateModal show={show} handleClose={handleClose} />
     </div>
