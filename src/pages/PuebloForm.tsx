@@ -1,17 +1,10 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import UpdateModal from '../components/UpdateModal'
 
 
 export default function PuebloForm() {
     const states = ['', 'Aguascalientes', 'Baja California Sur', 'Baja California', 'Campeche', 'Chiapas', 'Chihuahua', 'Ciudad de Mexico', 'Coahuila', 'Colima', 'Durango', 'Guanajuato', 'Guerrero', 'Hidalgo', 'Jalisco', 'Mexico', 'Michoacan', 'Morelos', 'Nayarit', 'Nuevo Leon', 'Oaxaca', 'Puebla', 'Queretaro', 'Quintaran Roo', 'San Luis Potosi', 'Sinaloa', 'Sonora', 'Tabasco', 'Tamaulipas', 'Tlaxcala', 'Veracruz', 'Yucatan', 'Zacatecas']
-
-    type DeleteForm = {
-        _id: string
-    }
-
-    let intialDelete = {
-        _id: ''
-    }
 
     type Pueblo = {
         name: string,
@@ -31,6 +24,9 @@ export default function PuebloForm() {
     
     const [form, setForm] = useState(initialState)
     const [puebloId, setPuebloId] = useState('')
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const changeHandler = <P extends keyof Pueblo>(prop: keyof Pueblo, value: Pueblo[P]) => {
         setForm({...form, [prop]: value})
@@ -107,8 +103,9 @@ export default function PuebloForm() {
                 <h1 className='border-t-[1px] border-b-[1px] border-gray-400 p-3 w-1/2 text-center'>Update Pueblo</h1>
                 <p>Enter pueblo ID</p>
                 <input className='p-1 rounded'></input>
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2'>UPDATE</button>
+                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2' onClick={handleShow}>UPDATE</button>
             </form>
+            <UpdateModal show={show} handleClose={handleClose} />
     </div>
   )
 }
