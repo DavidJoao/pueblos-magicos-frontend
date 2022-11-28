@@ -1,12 +1,17 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { IoTrash } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
-
 
 
 export default function PuebloForm() {
     const states = ['', 'Aguascalientes', 'Baja California Sur', 'Baja California', 'Campeche', 'Chiapas', 'Chihuahua', 'Ciudad de Mexico', 'Coahuila', 'Colima', 'Durango', 'Guanajuato', 'Guerrero', 'Hidalgo', 'Jalisco', 'Mexico', 'Michoacan', 'Morelos', 'Nayarit', 'Nuevo Leon', 'Oaxaca', 'Puebla', 'Queretaro', 'Quintaran Roo', 'San Luis Potosi', 'Sinaloa', 'Sonora', 'Tabasco', 'Tamaulipas', 'Tlaxcala', 'Veracruz', 'Yucatan', 'Zacatecas']
+
+    type DeleteForm = {
+        _id: string
+    }
+
+    let intialDelete = {
+        _id: ''
+    }
 
     type Pueblo = {
         name: string,
@@ -25,12 +30,12 @@ export default function PuebloForm() {
     }
     
     const [form, setForm] = useState(initialState)
+    const [puebloId, setPuebloId] = useState('')
 
     const changeHandler = <P extends keyof Pueblo>(prop: keyof Pueblo, value: Pueblo[P]) => {
         setForm({...form, [prop]: value})
-        console.log(form)
     }
-    
+
     const ImagesHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
         let text = e.target.value;
         let textArray = text.split(' ')
@@ -46,6 +51,8 @@ export default function PuebloForm() {
 
     const handleDelete = (e:React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault()
+        axios.delete(`http://localhost:8000/pueblos/${puebloId}`)
+        setPuebloId('')
     }
 
     const handleUpdate = (e:React.ChangeEvent<HTMLFormElement>) => {
@@ -90,7 +97,10 @@ export default function PuebloForm() {
             <form onSubmit={handleDelete} className='flex flex-col justify-center items-center mb-2 w-full'>
                 <h1 className='border-b-[1px] border-gray-400 w-1/2 text-center pb-3 mb-2'>Delete Pueblo</h1>
                 <h1>Enter pueblo ID</h1>
-                <input className='p-1 rounded mt-2' placeholder="Ex. 1ac2tv56723ds" />
+                <input className='p-1 rounded mt-2' placeholder="Ex. 1ac2tv56723ds" value={puebloId} onChange={(e) => {
+                    setPuebloId(e.target.value)
+                    console.log(puebloId)
+                    }} />
                 <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2' type='submit'>DELETE</button>
             </form>
             <form className='w-full flex flex-col items-center p-2' onSubmit={handleUpdate}>
