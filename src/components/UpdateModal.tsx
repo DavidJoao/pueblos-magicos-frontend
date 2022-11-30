@@ -3,7 +3,7 @@ import {Modal} from 'react-bootstrap'
 import { useState } from 'react'
 import axios from 'axios'
 
-const UpdateModal = ( {show, handleClose}: any ) => {
+const UpdateModal = ( {show, handleClose, findResults}: any ) => {
 
   const states = ['', 'Aguascalientes', 'Baja California Sur', 'Baja California', 'Campeche', 'Chiapas', 'Chihuahua', 'Ciudad de Mexico', 'Coahuila', 'Colima', 'Durango', 'Guanajuato', 'Guerrero', 'Hidalgo', 'Jalisco', 'Mexico', 'Michoacan', 'Morelos', 'Nayarit', 'Nuevo Leon', 'Oaxaca', 'Puebla', 'Queretaro', 'Quintaran Roo', 'San Luis Potosi', 'Sinaloa', 'Sonora', 'Tabasco', 'Tamaulipas', 'Tlaxcala', 'Veracruz', 'Yucatan', 'Zacatecas']
 
@@ -16,11 +16,11 @@ const UpdateModal = ( {show, handleClose}: any ) => {
   }
 
   let initialState: Pueblo = {
-      name: '',
-      description:'',
-      state: '',
-      country: '',
-      images: []
+      name: '' || findResults.name,
+      description: '' || findResults.description,
+      state: '' || findResults.state,
+      country: '' || findResults.country,
+      images: '' || findResults.images.join(' ')
   }
 
   const [form, setForm] = useState(initialState)
@@ -51,11 +51,11 @@ const submitHandler = (e:React.ChangeEvent<HTMLFormElement>) => {
     <Modal.Body className="flex flex-col justify-center items-center" >
       <form onSubmit={submitHandler} className='flex justift-center items-center flex-col border-b-[1px] border-gray-400 w-1/2 mb-3'>
                   <h4>Name:</h4>
-                  <input required className='p-1 rounded border' placeholder='Name' value={form.name} onChange={(e) => {
+                  <input required className='p-1 rounded border' placeholder='Name' value={form && form.name || findResults.name} onChange={(e) => {
                       changeHandler("name", e.target.value)
                   }} />
                   <h4>Description:</h4>
-                  <input required className='p-1 rounded border' placeholder='Description' value={form.description} onChange={(e) => {
+                  <input required className='p-1 rounded border' placeholder='Description' value={form && form.description || findResults.description} onChange={(e) => {
                       changeHandler("description", e.target.value)
                   }} />
                   <h4>Location:</h4>
@@ -65,7 +65,7 @@ const submitHandler = (e:React.ChangeEvent<HTMLFormElement>) => {
                   }}>
                           {states.map((state) => {
                               return(
-                                  <option key={state} value={state}>{state}</option>
+                                  <option key={state} value={state || findResults.state}>{state || findResults.state}</option>
                               )
                           })}
                       </select>
@@ -77,7 +77,7 @@ const submitHandler = (e:React.ChangeEvent<HTMLFormElement>) => {
                       </select>
                   </div>
                   <h4>Images:</h4>
-                  <input required placeholder='Enter links separated by one space' className='p-1 rounded border' onChange={ImagesHandler}/>
+                  <input required placeholder='Enter links separated by one space' value={findResults.images.join(' ')} className='p-1 rounded border' onChange={ImagesHandler}/>
                   <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2'>UPDATE</button>
               </form>
     </Modal.Body>
