@@ -128,7 +128,7 @@ export default function PuebloForm() {
                 }}></input>
                 <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2' onClick={handleFind}>UPDATE</button>
             </form>
-            <UpdateModal show={show} handleClose={handleClose} />
+            <UpdateModal show={show} handleClose={handleClose} findResults={findResults}/>
     </div>
   )
 }
