@@ -42,6 +42,10 @@ const submitHandler = (e:React.ChangeEvent<HTMLFormElement>) => {
   setForm(initialState)
 }
 
+const handleUpdate = () => {
+  //axios call to make update
+}
+
   return (
     <Modal size="lg" show={show} onHide={handleClose} style={{overflow:'auto', height:'90%'}}>
     <Modal.Header className='flex flex-col' closeButton>
@@ -78,7 +82,7 @@ const submitHandler = (e:React.ChangeEvent<HTMLFormElement>) => {
                   </div>
                   <h4>Images:</h4>
                   <input required placeholder='Enter links separated by one space' value={findResults.images.join(' ')} className='p-1 rounded border' onChange={ImagesHandler}/>
-                  <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2'>UPDATE</button>
+                  <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 mt-2' onClick={handleUpdate}>UPDATE</button>
               </form>
     </Modal.Body>
 </Modal>
